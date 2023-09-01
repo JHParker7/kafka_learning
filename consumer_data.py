@@ -1,5 +1,6 @@
 from kafka import KafkaConsumer
 import json
+import pandas as pd
 consumer = KafkaConsumer(
     'data',
     bootstrap_servers=['localhost:9093'],
@@ -11,4 +12,4 @@ x=0
 for message in consumer:
     x=x+1
     print(x)
-    print(message.value)
+    print(pd.read_json(message.value))
